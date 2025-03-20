@@ -1,35 +1,42 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+// import reactLogo from './assets/react.svg'
+// import viteLogo from '/vite.svg'
 import './App.css'
+import {Todo} from "./types/todos"
+import TodoList from "./components/TodoList"
+import TodoForm from "./components/TodoForm"
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const [todos, setTodos] = useState<Todo[]>([])
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+  const addTodo = (text: string) => {
+    const newTodo = {
+      id: Date.now(),
+      text,
+      completed: false,
+    };
+    setTodos([...todos, newTodo])
+    //元のtodosは残したままで、newTodoを入れるってこと
+  };
+
+  const toggledTodo = (id: number) => {
+    setTodos(todos.map(todo => 
+      todo.id === id ? {...todo, completed: !todo.completed } : todo
+    ));
+  };
+
+  const deleteTodo = (id: number) => {
+    setTodos(todos.filter(todo => todo.id !== id));
+  };
+
+  return(
+    <div>
+      <h1>Todo アプリ</h1>
+      <TodoForm addTodo={addTodo} />
+      {/* <TodoList todos={todos} toggledTodo={toggledTodo} deleteTodo={deleteTodo} /> */}
+    </div>
   )
 }
+
 
 export default App
