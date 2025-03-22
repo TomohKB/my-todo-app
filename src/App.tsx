@@ -19,11 +19,17 @@ const App = () => {
     //元のtodosは残したままで、newTodoを入れるってこと
   };
 
-  const toggledTodo = (id: number) => {
+  const toggleTodo = (id: number) => {
     setTodos(todos.map(todo => 
       todo.id === id ? {...todo, completed: !todo.completed } : todo
     ));
   };
+
+  const editTodo = (id: number, newText: string) => {
+    setTodos(todos.map(todo => 
+      todo.id === id ? {...todo, text: newText} : todo
+    ))
+  }
 
   const deleteTodo = (id: number) => {
     setTodos(todos.filter(todo => todo.id !== id));
@@ -33,7 +39,7 @@ const App = () => {
     <div>
       <h1>Todo アプリ</h1>
       <TodoForm addTodo={addTodo} />
-      {/* <TodoList todos={todos} toggledTodo={toggledTodo} deleteTodo={deleteTodo} /> */}
+      <TodoList todos={todos} toggleTodo={toggleTodo} editTodo={editTodo} deleteTodo={deleteTodo} />
     </div>
   )
 }

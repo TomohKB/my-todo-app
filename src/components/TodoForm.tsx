@@ -1,10 +1,10 @@
 import { useState } from "react"
 
-interface addTodoProps {
-
+type addTodoProps = {
+    addTodo: (text: string) => void; 
 }
 
-const TodoForm = () => {
+const TodoForm = ({ addTodo }: addTodoProps) => {
     const[text, setText] = useState("");
 
     const handleSubmit = (e: React.FormEvent) => {
