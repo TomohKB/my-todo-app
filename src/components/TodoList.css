@@ -1,0 +1,63 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  table-layout: fixed;
+}
+
+th,
+td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #444;
+  vertical-align: middle;
+  text-align: left;
+}
+
+th {
+  font-family: "Arial", sans-serif; /* フォント変更 */
+  font-size: 16px; /* フォントサイズ */
+  font-weight: bold; /* 太字（なくてもいい） */
+  color: #fff; /* 文字色 */
+  background-color: #222; /* 背景色（今と同じならそのまま） */
+  padding: 12px 16px; /* 余白 */
+  text-align: center; /* 文字を中央に揃える */
+}
+
+td button {
+  padding: 6px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+  background-color: #222;
+  color: white;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+td button:hover {
+  background-color: #444;
+}
+
+input {
+  padding: 8px 12px;
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+td {
+  vertical-align: middle;
+  height: 48px; /* 高さそろえる */
+  text-align: center;
+}
+
+td button,
+td input {
+  vertical-align: middle;
+}
+
+button {
+  padding: 6px 12px;
+  font-size: 14px;
+  vertical-align: middle;
+}
